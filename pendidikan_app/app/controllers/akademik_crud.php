@@ -1,6 +1,7 @@
 <?php
 session_start();
-require '../config/db.php';
+// FIX: Menggunakan __DIR__ untuk membuat path absolut ke file config
+require __DIR__ . '/../config/db.php';
 
 // ===================================================================
 // FUNGSI BANTU (HELPERS)
@@ -108,7 +109,6 @@ if (isset($_GET['ambil_krs'])) {
     $jadwal_id = (int)$_GET['ambil_krs'];
 
     if ($mahasiswa_id) {
-        // Cek apakah sudah diambil sebelumnya untuk mencegah duplikat
         $cek = $conn->query("SELECT id FROM krs WHERE mahasiswa_id = $mahasiswa_id AND jadwal_id = $jadwal_id");
         if ($cek->num_rows == 0) {
             $stmt = $conn->prepare("INSERT INTO krs (mahasiswa_id, jadwal_id) VALUES (?, ?)");
@@ -129,7 +129,6 @@ if (isset($_GET['batal_krs'])) {
     $krs_id = (int)$_GET['batal_krs'];
 
     if ($mahasiswa_id) {
-        // Hapus KRS hanya jika milik mahasiswa yang login dan statusnya masih 'Menunggu'
         $stmt = $conn->prepare("DELETE FROM krs WHERE id = ? AND mahasiswa_id = ? AND status_approval = 'Menunggu'");
         $stmt->bind_param("ii", $krs_id, $mahasiswa_id);
         $stmt->execute();
@@ -137,12 +136,6 @@ if (isset($_GET['batal_krs'])) {
     header("Location: ../../krs.php");
     exit;
 }
-
-?>
-
-<?php
-session_start();
-// ... (semua kode yang sudah ada sebelumnya) ...
 
 
 // ===================================================================
@@ -169,10 +162,6 @@ if (isset($_GET['tolak_krs'])) {
     exit;
 }
 
-?>
-
-<?php
-// ... (semua kode yang sudah ada sebelumnya, termasuk session_start dan require) ...
 
 // ===================================================================
 // INPUT NILAI KHS (Hanya Admin)
@@ -184,20 +173,14 @@ if (isset($_POST['simpan_nilai'])) {
     $krs_ids = $_POST['krs_id'];
     $nilai_hurufs = $_POST['nilai_huruf'];
 
-    // Mapping nilai huruf ke angka
     $nilai_map = [
-        'A' => 4.0,
-        'B' => 3.0,
-        'C' => 2.0,
-        'D' => 1.0,
-        'E' => 0.0
+        'A' => 4.0, 'B' => 3.0, 'C' => 2.0, 'D' => 1.0, 'E' => 0.0
     ];
 
     $stmt = $conn->prepare("INSERT INTO khs (krs_id, nilai_huruf, nilai_angka) VALUES (?, ?, ?)");
 
     foreach ($krs_ids as $index => $krs_id) {
         $nilai_huruf = $nilai_hurufs[$index];
-        // Hanya proses jika nilai dipilih
         if (!empty($nilai_huruf)) {
             $nilai_angka = $nilai_map[$nilai_huruf];
             $stmt->bind_param("isd", $krs_id, $nilai_huruf, $nilai_angka);
