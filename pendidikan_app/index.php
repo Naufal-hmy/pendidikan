@@ -41,6 +41,9 @@ if (!isset($_SESSION['login'])) {
                     <a href="mahasiswa.php" class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg hover:bg-gray-100 group hover:shadow transition duration-300">
                         <i class="fas fa-users w-6 h-6 text-gray-500 group-hover:text-blue-500"></i><span class="ml-3">Data Mahasiswa</span>
                     </a>
+                    <a href="manajemen_dosen.php" class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg hover:bg-gray-100 group hover:shadow">
+                        <i class="fas fa-chalkboard-teacher w-6 h-6 text-gray-500 group-hover:text-blue-500"></i><span class="ml-3">Manajemen Dosen</span>
+                    </a>
                     <a href="pmb.php" class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg hover:bg-gray-100 group hover:shadow transition duration-300">
                         <i class="fas fa-user-plus w-6 h-6 text-gray-500 group-hover:text-blue-500"></i><span class="ml-3">Penerimaan Mahasiswa Baru</span>
                     </a>

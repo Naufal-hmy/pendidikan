@@ -66,6 +66,7 @@ $data_pmb = $conn->query("SELECT * FROM pmb ORDER BY id DESC");
                 </form>
             </div>
             
+            <!-- Judul dan Tombol Export -->
             <div class="flex justify-between items-center mb-4">
                 <h2 class="text-xl font-bold text-gray-800"><i class="fas fa-list"></i> Data Pendaftar</h2>
                 <div class="space-x-2">
@@ -78,6 +79,7 @@ $data_pmb = $conn->query("SELECT * FROM pmb ORDER BY id DESC");
                 </div>
             </div>
 
+            <!-- Tabel Data Pendaftar -->
             <div class="overflow-x-auto">
                 <table class="min-w-full bg-white">
                     <thead class="bg-gray-800 text-white">
