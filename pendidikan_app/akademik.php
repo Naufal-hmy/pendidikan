@@ -27,17 +27,9 @@ if (!isset($_SESSION['login'])) {
                     <p class="text-gray-600 text-sm mt-1">Lihat jadwal perkuliahan semester aktif.</p>
                 </a>
                 
-                <a href="krs.php" class="block p-6 bg-green-50 hover:bg-green-100 rounded-lg shadow transition">
-                    <i class="fas fa-edit fa-2x text-green-500"></i>
-                    <h3 class="font-bold text-lg text-green-800 mt-2">Kartu Rencana Studi (KRS)</h3>
-                    <p class="text-gray-600 text-sm mt-1">Isi dan lihat rencana studi semester Anda.</p>
-                </a>
+           
 
-                <a href="khs.php" class="block p-6 bg-yellow-50 hover:bg-yellow-100 rounded-lg shadow transition">
-                    <i class="fas fa-poll-result fa-2x text-yellow-500"></i>
-                    <h3 class="font-bold text-lg text-yellow-800 mt-2">Kartu Hasil Studi (KHS)</h3>
-                    <p class="text-gray-600 text-sm mt-1">Lihat rekapitulasi dan transkrip nilai.</p>
-                </a>
+              
 
 
                 <?php if ($_SESSION['role'] === 'admin'): // Menu ini khusus untuk admin ?>
@@ -53,17 +45,9 @@ if (!isset($_SESSION['login'])) {
                         <p class="text-gray-600 text-sm mt-1">Atur jadwal kelas per semester.</p>
                     </a>
 
-                    <a href="persetujuan_krs.php" class="block p-6 bg-orange-50 hover:bg-orange-100 rounded-lg shadow transition">
-                        <i class="fas fa-user-check fa-2x text-orange-500"></i>
-                        <h3 class="font-bold text-lg text-orange-800 mt-2">Persetujuan KRS</h3>
-                        <p class="text-gray-600 text-sm mt-1">Setujui atau tolak KRS mahasiswa.</p>
-                    </a>
+    
 
-                    <a href="input_nilai.php" class="block p-6 bg-red-50 hover:bg-red-100 rounded-lg shadow transition">
-                        <i class="fas fa-marker fa-2x text-red-500"></i>
-                        <h3 class="font-bold text-lg text-red-800 mt-2">Input Nilai KHS</h3>
-                        <p class="text-gray-600 text-sm mt-1">Input nilai akhir mahasiswa.</p>
-                    </a>
+                   
                 <?php endif; ?>
             </div>
         </div>
