@@ -1,0 +1,8 @@
+{
+    "name": "naufal-hmy/pendidikan",
+    "description": "Aplikasi website pendidikan sederhana.",
+    "require": {
+        "phpoffice/phpspreadsheet": "^1.29",
+        "dompdf/dompdf": "^2.0"
+    }
+}
